@@ -1,0 +1,400 @@
+/* --- ESTILOS MÓDULO RELAX MIND --- */
+.relaxmind-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.relaxmind-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.relaxmind-logo-icon {
+  font-size: 32px;
+}
+
+.relaxmind-header h2 {
+  font-size: 22px;
+  color: #7c3aed;
+  font-weight: 800;
+}
+
+.relaxmind-subtitle {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.btn-back {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-back:hover {
+  background: #e2e8f0;
+}
+
+/* MENÚ TABS INTERNO DE RELAX MIND */
+.relaxmind-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #7c3aed;
+  padding-bottom: 8px;
+}
+
+.rm-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.rm-tab-btn:hover {
+  background-color: #fff;
+  color: #7c3aed;
+}
+
+.rm-tab-btn.active {
+  background-color: #fff;
+  color: #7c3aed;
+}
+
+/* PANELES DE CONTENIDO */
+.rm-card-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.panel-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.green-text {
+  color: #7c3aed !important;
+}
+
+/* TEMPORIZADOR Y PAUSA */
+.timer-display {
+  font-size: 48px;
+  font-weight: 900;
+  color: #7c3aed;
+  margin: 20px 0;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.breathing-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #7c3aed;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 20px auto;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Ocultar elementos */
+.hidden {
+  display: none !important;
+}
+
+/* Estilo para el botón de la pestaña activa */
+.rm-tab-btn.active {
+  background-color: #7c3aed !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+/* --- CONTENEDOR Y CÍRCULO DE RESPIRACIÓN --- */
+.breathing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  margin: 10px 0;
+}
+
+.breathing-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #7c3aed);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 0 25px  #7c3aed;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ANIMACIÓN: INHALAR (SE EXPANDE / SE INFLA) */
+.breathing-circle.inhale {
+  transform: scale(1.75);
+  box-shadow: 0 0 45px #4b5563;
+  background: linear-gradient(135deg, #7c3aed, #7c3aed);
+}
+
+/* ANIMACIÓN: MANTENER (BRILLO SUAVE) */
+.breathing-circle.hold {
+  transform: scale(1.75);
+  box-shadow: 0 0 55px #b48253;
+}
+
+/* ANIMACIÓN: EXHALAR (SE CONTRAE / SE DESINFLA) */
+.breathing-circle.exhale {
+  transform: scale(1);
+  box-shadow: 0 0 15px #38bdf8;
+  background: linear-gradient(135deg, #7c3aed,  #7c3aed);
+}
+
+/* Estilo del contador de tiempo restante en la pausa */
+.timer-countdown {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background-color:  #7c3aed;
+  border: 1px solid #a7f3d0;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los botones de modo del temporizador */
+.timer-modes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mode-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+  background: #e2e8f0;
+}
+
+.mode-btn.active {
+  background: #fff;
+  color: #7c3aed;
+  border-color: #7c3aed;
+}
+
+/* Botón secundario de reinicio */
+.btn-action.secondary {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.btn-action.secondary:hover {
+  background: #e2e8f0 !important;
+}
+
+/* TIEMPO PERSONALIZADO */
+.custom-time-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.custom-time-input {
+  width: 65px;
+  padding: 5px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 700;
+  color: #7c3aed;
+}
+
+/* RUIDO BLANCO SWITCH */
+.white-noise-control {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+}
+
+.switch-label input {
+  accent-color: #7c3aed;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* SELECTORES DE TIPO DE PAUSA Y TIEMPO */
+.pause-selectors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.selector-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.custom-select {
+  padding: 6px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color:  #7c3aed;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+
+.custom-select.short-select {
+  width: 110px;
+}
+
+/* ÁREA Y TARJETAS GUÍA DE PAUSAS */
+.pause-content-area {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.pause-view {
+  width: 100%;
+}
+
+.guide-card {
+  background: #fff;
+  border: 1px solid #7c3aed;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.guide-icon {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.guide-card h4 {
+  font-size: 18px;
+  color: #7c3aed;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.guide-card p {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* BADGES Y TEMPORIZADOR DE PASOS DE ESTIRAMIENTO */
+.step-badge {
+  background-color: #7c3aed;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.step-timer-label {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #7c3aed;
+  background-color: #fff;
+  border: 1px solid #7c3aed;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: 600;
+}

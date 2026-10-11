@@ -1,0 +1,50 @@
+/* Información del estudiante */
+.student-info-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.student-info-header h2 {
+  font-size: 20px;
+  color: #1e293b;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.student-info-header p {
+  font-size: 12px;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Modificador para grillas de 3 columnas centradas */
+.grid-3-cols {
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 700px !important;
+  margin: 0 auto;
+}
+
+/* Centrado y alineación exacta de los 3 ítems con el banner de RESERVAS */
+#estudiantes-content .section-banner {
+  max-width: 900px;
+  width: 100%;
+  margin: 10px auto 35px auto;
+}
+
+#estudiantes-content .grid-3-cols {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 900px !important; /* Mismo ancho máximo del banner */
+  width: 100%;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+#estudiantes-content .grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}

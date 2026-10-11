@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SICAU - Institución Universitaria Pascual Bravo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/relaxmind.css">
+  <link rel="stylesheet" href="css/relax.css">
+  <link rel="icon" type="image/ico" href="assets/icono.ico">
+</head>
+<body>
+
+  <!-- 1. HEADER SUPERIOR -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logos-group">
+        <img src="assets/pascual_header.png" alt="Pascual Bravo" class="logo-img logo-pascual">
+        <img src="assets/sicauLogo.png" alt="SICAU" class="logo-img logo-sicau">
+      </div>
+
+      <div class="user-menu">
+        <a href="#" class="user-btn-link">Web Institucional</a>
+        <div class="user-info">
+          <span class="user-icon">👤</span>
+          <span class="username">andres.borja645</span>
+        </div>
+        <a href="#" class="logout-link">
+          <span class="logout-icon">↪</span> Cerrar sesión
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. BARRA DE NAVEGACIÓN AZUL -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html" id="nav-inicio">Inicio</a></li>
+        <li><a href="estudiantes.html">Estudiantes</a></li>
+        <li><a href="egresados.html">Egresados</a></li>
+        <li><a href="extension.html">Extensión</a></li>
+        <li><a href="relax_mind.html" id="nav-relaxmind" class="highlight-nav active">
+          <img src="assets/logo.ico" width="15" height="10"> Relax Mind (Bienestar)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- SECCIÓN RELAX MIND (SIN LA CLASE HIDDEN) -->
+  <section id="relaxmind-content" class="content-container">
+    
+    <!-- ENCABEZADO Y BOTÓN VOLVER -->
+    <div class="relaxmind-header">
+      <div class="relaxmind-title-group">
+        <span class="relaxmind-logo-icon">
+          <img src="assets/logo.png" alt="" width="125" height="100">
+        </span>
+        <div>
+          <h2>Relax Mind</h2>
+          <p class="relaxmind-subtitle">Plataforma de Bienestar Digital & Prevención de Fatiga Cognitiva</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENÚ DE PESTAÑAS -->
+    <nav class="relaxmind-nav">
+      <button class="rm-tab-btn active" data-tab="tab-dashboard">📊 Dashboard</button>
+      <button class="rm-tab-btn" data-tab="tab-encuesta">📋 Test de Bienestar</button>
+      <button class="rm-tab-btn" data-tab="tab-foco">⏱️ Temporizador Foco</button>
+      <button class="rm-tab-btn" data-tab="tab-pausa">🧘 Pausa Guiada</button>
+    </nav>
+
+    <!-- CONTENIDOS DE LAS PESTAÑAS -->
+
+    <!-- Panel 1: Dashboard (Visible inicialmente) -->
+    <div id="tab-dashboard" class="rm-tab-content">
+    <!-- MÓDULO DASHBOARD / PANEL DE CONTROL -->
+      <div class="dashboard-wrapper">
+        
+        <!-- Encabezado de Bienvenida -->
+        <div class="dashboard-header mb-6">
+          <h3 class="dashboard-title">Bienvenido a tu Panel de Bienestar Digital</h3>
+          <p class="dashboard-subtitle">Monitorea tu productividad, controla la fatiga cognitiva y gestiona tu descanso académico.</p>
+        </div>
+
+        <!-- TARJETAS DE MÉTRICAS (KPIs) -->
+        <div class="kpi-grid">
+          
+          <div class="kpi-card">
+            <div class="kpi-icon text-purple-600">⏱️</div>
+            <div class="kpi-data">
+              <span class="kpi-value" id="kpi-foco-minutos">0 min</span>
+              <span class="kpi-label">Tiempo Enfocado</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon text-emerald-600">🎯</div>
+            <div class="kpi-data">
+              <span class="kpi-value" id="kpi-foco-sesiones">0</span>
+              <span class="kpi-label">Sesiones de Foco</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon text-blue-600">🧘</div>
+            <div class="kpi-data">
+              <span class="kpi-value" id="kpi-pausas-count">0</span>
+              <span class="kpi-label">Pausas Activas</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" id="kpi-estado-icono">🟢</div>
+            <div class="kpi-data">
+              <span class="kpi-value" id="kpi-estado-texto">Óptimo</span>
+              <span class="kpi-label">Estado Mental</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SECCIÓN DE RECOMENDACIÓN RÁPIDA -->
+        <div class="dashboard-card status-card mt-6" id="dash-status-card">
+          <div class="status-content">
+            <h4 class="font-bold text-slate-800 text-lg mb-1">💡 Diagnostic del Estado Actual</h4>
+            <p class="text-sm text-slate-600 mb-3" id="dash-status-desc">
+              Aún no has realizado tu autoevaluación de hoy. Realiza el test rápido para recibir sugerencias personalizadas.
+            </p>
+            <button id="dash-btn-test" class="btn-primary-sm">Realizar Test de Bienestar</button>
+          </div>
+        </div>
+
+        <!-- ACCESOS RÁPIDOS Y ACTIVIDAD RECIENTE -->
+        <div class="dash-two-columns mt-6">
+          
+          <!-- Accesos Rápidos -->
+          <div class="dashboard-card">
+            <h4 class="font-bold text-slate-800 mb-4">⚡ Acciones Rápidas</h4>
+            <div class="dash-quick-actions">
+              <button id="dash-quick-foco" class="quick-action-btn">
+                <span>🎯 Iniciar Foco (25 min)</span>
+                <small>Concentración asistida con audio ambiental</small>
+              </button>
+              <button id="dash-quick-pausa" class="quick-action-btn">
+                <span>🧘 Pausa Corta (3 min)</span>
+                <small>Descanso visual y respiración guiada</small>
+              </button>
+            </div>
+          </div>
+
+          <!-- Resumen de Actividad Reciente -->
+          <div class="dashboard-card">
+            <h4 class="font-bold text-slate-800 mb-4">📋 Actividad Reciente</h4>
+            <ul class="activity-list" id="dash-recent-activity">
+              <li class="text-xs text-slate-400 py-2 text-center">No hay actividad registrada el día de hoy.</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Panel 2: Test de Bienestar (Oculto) -->
+    <div id="tab-encuesta" class="rm-tab-content hidden">
+      <!-- MÓDULO DE TEST DE BIENESTAR -->
+      <div class="test-wrapper">
+        
+        <!-- Tarjeta Inicial del Test -->
+        <div class="test-card" id="test-intro-container">
+          <h3 class="test-title">Evaluación Rápida de Bienestar y Fatiga Cognitiva</h3>
+          <p class="test-subtitle">Tómate 1 minuto para evaluar tu estado actual. Esto nos ayudará a recomendarte la mejor estrategia de descanso o enfoque.</p>
+          
+          <button id="btn-start-test" class="btn-primary">Comenzar Test</button>
+        </div>
+
+        <!-- Formulario del Test (Oculto por defecto hasta iniciar) -->
+        <div class="test-card hidden" id="test-form-container">
+          <h3 class="test-title">Test de Autoevaluación</h3>
+          <p class="test-subtitle">Selecciona la opción que mejor describa cómo te sientes en este momento:</p>
+
+          <!-- Pregunta 1 -->
+          <div class="test-question-group">
+            <label class="test-label">1. ¿Qué tan cansados sientes tus ojos o tu mente en este momento?</label>
+            <div class="test-options">
+              <label class="radio-option"><input type="radio" name="p1" value="1"> Fresco / Despejado</label>
+              <label class="radio-option"><input type="radio" name="p1" value="2"> Ligeramente cansado</label>
+              <label class="radio-option"><input type="radio" name="p1" value="3"> Fatiga moderada (pesadez)</label>
+              <label class="radio-option"><input type="radio" name="p1" value="4"> Exhausto / Visión borrosa</label>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="test-question-group">
+            <label class="test-label">2. ¿Cómo calificarías tu nivel de estrés o ansiedad académica/laboral?</label>
+            <div class="test-options">
+              <label class="radio-option"><input type="radio" name="p2" value="1"> Tranquilo</label>
+              <label class="radio-option"><input type="radio" name="p2" value="2"> Algo acelerado</label>
+              <label class="radio-option"><input type="radio" name="p2" value="3"> Estresado</label>
+              <label class="radio-option"><input type="radio" name="p2" value="4"> Muy tenso / Abrumado</label>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="test-question-group">
+            <label class="test-label">3. ¿Qué tan fácil te ha sido mantener la concentración hoy?</label>
+            <div class="test-options">
+              <label class="radio-option"><input type="radio" name="p3" value="1"> Muy fácil y fluida</label>
+              <label class="radio-option"><input type="radio" name="p3" value="2"> Normal (con alguna distracción)</label>
+              <label class="radio-option"><input type="radio" name="p3" value="3"> Me cuesta concentrarme</label>
+              <label class="radio-option"><input type="radio" name="p3" value="4"> Imposible enfocarme</label>
+            </div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="test-question-group">
+            <label class="test-label">4. ¿Cuántas horas continuas llevas frente a pantallas sin descansar?</label>
+            <div class="test-options">
+              <label class="radio-option"><input type="radio" name="p4" value="1"> Menos de 1 hora</label>
+              <label class="radio-option"><input type="radio" name="p4" value="2"> Entre 1 y 2 horas</label>
+              <label class="radio-option"><input type="radio" name="p4" value="3"> Entre 2 y 4 horas</label>
+              <label class="radio-option"><input type="radio" name="p4" value="4"> Más de 4 horas seguidas</label>
+            </div>
+          </div>
+
+          <div class="test-actions">
+            <button id="btn-submit-test" class="btn-primary">Obtener Diagnóstico</button>
+          </div>
+        </div>
+
+        <!-- Resultado del Test (Oculto por defecto) -->
+        <div class="test-card hidden" id="test-result-container">
+          <div id="result-icon-badge" class="result-badge mb-3">🟢</div>
+          <h3 id="result-title" class="test-title">Estado Óptimo</h3>
+          <p id="result-description" class="test-subtitle mb-4">Tu mente está en buenas condiciones para continuar.</p>
+          
+          <div class="result-recommendation-box mb-4">
+            <h4 class="font-semibold text-sm text-slate-700 mb-1">💡 Recomendación sugerida:</h4>
+            <p id="result-recommendation-text" class="text-xs text-slate-600">Te sugerimos continuar con sesiones de foco productivo.</p>
+          </div>
+
+          <div class="flex justify-center gap-3">
+            <button id="btn-goto-recommended" class="btn-primary">Ir a la herramienta sugerida</button>
+            <button id="btn-retake-test" class="btn-secondary">Repetir Test</button>
+          </div>
+        </div>
+
+        <!-- Historial de Tests en LocalStorage -->
+        <div class="test-history-card mt-6">
+          <div class="foco-history-header">
+            <h4>📋 Historial de Autoevaluaciones</h4>
+            <button id="btn-clear-test-logs" class="btn-link-danger">Limpiar Historial</button>
+          </div>
+          <div class="foco-table-wrapper">
+            <table class="foco-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Puntuación</th>
+                  <th>Nivel de Fatiga</th>
+                </tr>
+              </thead>
+              <tbody id="test-logs-tbody">
+                <!-- Dinámico -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Panel 3: Temporizador Foco -->
+<div id="tab-foco" class="rm-tab-content hidden">
+  <!-- MÓDULO DE TEMPORIZADOR DE FOCO Y REGISTRO -->
+    <!-- MÓDULO DE TEMPORIZADOR DE FOCO Y REGISTRO -->
+<div class="foco-wrapper">
+  
+  <!-- Tarjeta Principal del Temporizador -->
+  <div class="foco-card">
+    <h3 class="foco-title">Sesión de Foco Productivo</h3>
+    <p class="foco-subtitle">Define tu tiempo de concentración, fija tu objetivo y elige tu ambiente sonoro.</p>
+
+    <!-- Campo de Objetivo de la Sesión -->
+    <div class="foco-input-group">
+      <label for="foco-task-input" class="foco-label">📌 ¿Cuál es tu objetivo para esta sesión?</label>
+      <input type="text" id="foco-task-input" placeholder="Ej: Resolver taller de inglés, maquetar HTML..." class="foco-input">
+    </div>
+
+    <!-- Selector de Modos Rápidos -->
+    <div class="foco-modes-container">
+      <button class="mode-btn active" data-time="1500">25 min</button>
+      <button class="mode-btn" data-time="900">15 min</button>
+      <button class="mode-btn" data-time="600">10 min</button>
+      <button class="mode-btn" data-time="300">5 min</button>
+    </div>
+
+    <!-- Personalizado -->
+    <div class="foco-custom-container">
+      <span>Tiempo personalizado (min):</span>
+      <input type="number" id="custom-minutes" value="25" min="1" max="180" class="foco-custom-input">
+      <button id="btn-set-custom" class="btn-secondary-sm">Fijar</button>
+    </div>
+
+    <!-- Display Grande de Tiempo -->
+    <div id="foco-display" class="foco-display">25:00</div>
+    <p id="foco-status-text" class="foco-status">Listo para comenzar</p>
+
+    <!-- Selector de Sonido Ambiente -->
+    <div class="foco-input-group">
+      <label for="select-ambient-sound" class="foco-label">🎧 Sonido de fondo enfocado:</label>
+      <select id="select-ambient-sound" class="foco-select">
+        <option value="none">🔇 Sin sonido de fondo</option>
+        <option value="white">📻 Ruido Blanco (Aislamiento puro)</option>
+        <option value="rain">🌧️ Lluvia Suave</option>
+        <option value="forest">🌲 Ambiente Bosque</option>
+      </select>
+    </div>
+
+    <!-- Botones Principales de Control -->
+    <div class="foco-actions">
+      <button id="btn-foco-toggle" class="btn-primary">Iniciar Foco</button>
+      <button id="btn-foco-reset" class="btn-secondary">Reiniciar</button>
+    </div>
+  </div>
+
+  <!-- Modal / Retroalimentación Post-Foco -->
+  <div id="foco-feedback-modal" class="foco-modal hidden">
+    <div class="foco-modal-content">
+      <h4>🎉 ¡Sesión Finalizada!</h4>
+      <p>Reflexiona un momento sobre tu desempeño antes de tomar un descanso:</p>
+      
+      <div class="foco-input-group">
+        <label for="feedback-rating" class="foco-label">¿Cómo evalúas tu concentración?</label>
+        <select id="feedback-rating" class="foco-select">
+          <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Excelente (Sin distracciones)</option>
+          <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Buena (Muy pocas interrupciones)</option>
+          <option value="⭐⭐⭐">⭐⭐⭐ Regular (Algo distraído)</option>
+          <option value="⭐⭐">⭐⭐ Baja concentración</option>
+        </select>
+      </div>
+
+      <div class="foco-input-group">
+        <label for="feedback-notes" class="foco-label">Notas / Logros de la sesión:</label>
+        <textarea id="feedback-notes" rows="3" placeholder="¿Lograste tu objetivo? ¿Qué te distrajo?" class="foco-textarea"></textarea>
+      </div>
+
+      <div class="foco-modal-actions">
+        <button id="btn-save-log" class="btn-primary">Guardar en Historial</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de Historial (LocalStorage) -->
+  <div class="foco-history-card">
+    <div class="foco-history-header">
+      <h4>📊 Historial de Sesiones de Foco</h4>
+      <button id="btn-clear-logs" class="btn-link-danger">Limpiar Historial</button>
+    </div>
+
+    <div class="foco-table-wrapper">
+      <table class="foco-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Objetivo / Tarea</th>
+            <th>Duración</th>
+            <th>Estado</th>
+            <th>Calificación</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody id="foco-logs-tbody">
+          <!-- Se llena dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+  <!--<div class="rm-card-panel text-center">
+    <h3>Sesión de Foco Productivo</h3>
+    <p class="panel-desc">Define tu tiempo de concentración y activa el ruido blanco para aislar distracciones.</p>
+
+    <!-- SELECTOR DE MODOS RÁPIDOS + TIEMPO PERSONALIZADO --
+    <div class="timer-modes">
+      <button class="mode-btn active" data-time="1500">25 min</button>
+      <button class="mode-btn" data-time="900">15 min</button>
+      <button class="mode-btn" data-time="600">10 min</button>
+      <button class="mode-btn" data-time="300">5 min</button>
+    </div>
+
+    <!-- IMPUTS DE TIEMPO PERSONALIZADO --
+    <div class="custom-time-container">
+      <label for="custom-minutes">Tiempo personalizado (min):</label>
+      <input type="number" id="custom-minutes" min="1" max="180" value="25" class="custom-time-input">
+      <button id="btn-set-custom" class="mode-btn">Fijar</button>
+    </div>
+
+    <!-- PANTALLA DEL RELOJ --
+    <div class="timer-display" id="foco-display">25:00</div>
+    
+    <p id="foco-status-text" class="stat-label" style="margin-bottom: 15px; font-weight: 600; color: #7c3aed;">Listo para comenzar</p>
+
+    <!-- OPCIÓN DE RUIDO BLANCO --
+    <div class="white-noise-control">
+      <label class="switch-label">
+        <input type="checkbox" id="chk-white-noise">
+        <span>🎧 Activar Ruido Blanco de fondo durante la sesión</span>
+      </label>
+    </div>
+
+    <!-- BOTONES DE CONTROL --
+    <div class="timer-controls" style="margin-top: 20px;">
+      <button class="btn-action" id="btn-foco-toggle">Iniciar Foco</button>
+      <button class="btn-action secondary" id="btn-foco-reset">Reiniciar</button>
+    </div>
+  </div>-->
+</div>
+
+  <!-- Panel 4: Pausa Guiada -->
+<!-- Panel 4: Pausa Guiada (Dinámica con 6 opciones) -->
+<div id="tab-pausa" class="rm-tab-content hidden">
+  <div class="rm-card-panel text-center">
+    <h3>Pausas de Bienestar y Desconexión</h3>
+    <p class="panel-desc">Selecciona el tipo de pausa activa o relajación que deseas realizar y fija su duración.</p>
+
+    <!-- SELECTORES: TIPO DE PAUSA Y TIEMPO -->
+    <div class="pause-selectors-container">
+      <div class="selector-group">
+        <label for="select-pause-type">Tipo de pausa:</label>
+        <select id="select-pause-type" class="custom-select">
+          <option value="respiracion">1. Respiración guiada</option>
+          <option value="estiramientos">2. Estiramientos suaves</option>
+          <option value="descanso_visual">3. Descanso visual</option>
+          <option value="relajacion">4. Pausa de relajación</option>
+          <option value="mindfulness">5. Atención plena (mindfulness)</option>
+          <option value="pausa_activa">6. Pausa activa</option>
+        </select>
+      </div>
+
+      <div class="selector-group">
+        <label for="select-pause-time">Duración (máx 5 min):</label>
+        <select id="select-pause-time" class="custom-select short-select">
+          <option value="60">1 minuto</option>
+          <option value="120" selected>2 minutos</option>
+          <option value="180">3 minutos</option>
+          <option value="300">5 minutos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- CUENTA REGRESIVA DE LA PAUSA -->
+    <div class="timer-countdown">
+      Tiempo restante: <span id="pause-timer-display">02:00</span>
+    </div>
+
+    <!-- CONTENEDORES DINÁMICOS POR TIPO DE PAUSA -->
+    <div class="pause-content-area">
+      
+      <!-- 1. Respiración Guiada -->
+      <div id="pause-view-respiracion" class="pause-view">
+        <div class="breathing-container">
+          <div class="breathing-circle" id="breath-circle">
+            <span id="breath-text">Inhalar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Estiramientos Suaves -->
+      <div id="pause-view-estiramientos" class="pause-view hidden">
+        <div class="guide-card text-center">
+          <!-- Indicador de paso actual (ej: Paso 1 de 10) -->
+          <div class="step-badge" id="stretch-step-badge">Paso 1 de 10</div>
+          
+          <span class="guide-icon" id="stretch-icon">🧘‍♂️</span>
+          <h4 id="stretch-title">1. Relaja el cuello</h4>
+          <p id="stretch-desc">Inclina suavemente la cabeza hacia un hombro, sostiene y luego cambia al otro lado.</p>
+          
+          <!-- Tiempo que le resta al estiramiento actual -->
+          <div class="step-timer-label">
+            Cambio en: <strong id="stretch-step-timer">12s</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Descanso Visual -->
+      <div id="pause-view-descanso_visual" class="pause-view hidden">
+        <div class="guide-card text-center">
+          <div class="step-badge" id="eye-phase-badge">Fase 1: Enfoque Lejano</div>
+          
+          <span class="guide-icon" id="eye-icon">🔭</span>
+          <h4 id="eye-title">Mira a lo lejos (> 6 metros)</h4>
+          <p id="eye-desc">Aparta la mirada de la pantalla. Busca un punto lejano por la ventana o al fondo de la habitación para relajar el enfoque del cristalino.</p>
+          
+          <div class="step-timer-label">
+            Siguiente cambio en: <strong id="eye-step-timer">20s</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Pausa de Relajación -->
+      <div id="pause-view-relajacion" class="pause-view hidden">
+        <div class="guide-card text-center">
+          <div class="step-badge" id="relax-step-badge">Fase 1: Hombros y Cuello</div>
+          
+          <span class="guide-icon" id="relax-icon">💆‍♂️</span>
+          <h4 id="relax-title">Deja caer los hombros</h4>
+          <p id="relax-desc">Desaprieta la mandíbula, separa los dientes suavemente y deja que los hombros caigan lejos de las orejas.</p>
+          
+          <div class="step-timer-label">
+            Siguiente zona en: <strong id="relax-step-timer">15s</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Atención Plena (Mindfulness) -->
+      <div id="pause-view-mindfulness" class="pause-view hidden">
+        <div class="guide-card text-center">
+          <div class="step-badge" id="mind-step-badge">Paso 1 de 3</div>
+          
+          <span class="guide-icon" id="mind-icon">🧠</span>
+          <h4 id="mind-title">Conciencia de Sonidos</h4>
+          <p id="mind-desc">Cierra los ojos un instante. Identifica tres sonidos lejanos o cercanos en tu entorno sin juzgarlos, solo acéptalos.</p>
+          
+          <div class="step-timer-label">
+            Siguiente fase en: <strong id="mind-step-timer">20s</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Pausa Activa -->
+      <div id="pause-view-pausa_activa" class="pause-view hidden">
+        <div class="guide-card text-center">
+          <div class="step-badge" id="active-step-badge">Paso 1 de 4</div>
+          
+          <span class="guide-icon" id="active-icon">🚶‍♂️</span>
+          <h4 id="active-title">Movilidad de Articulaciones</h4>
+          <p id="active-desc">Ponte de pie junto a tu silla. Realiza círculos suaves con tus muñecas y tobillos para lubricar las articulaciones.</p>
+          
+          <div class="step-timer-label">
+            Siguiente movimiento en: <strong id="active-step-timer">15s</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTÓN DE CONTROL -->
+    <div style="margin-top: 20px;">
+      <button class="btn-action" id="btn-pause-toggle">Iniciar Pausa</button>
+    </div>
+  </div>
+</div>
+
+  </section>
+
+  <script src="js/app.js"></script>
+  <script src="js/relax.js"></script>
+</body>
+</html>

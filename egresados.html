@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SICAU - Institución Universitaria Pascual Bravo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/relaxmind.css">
+  <link rel="stylesheet" href="css/egresados.css">
+  <link rel="icon" type="image/ico" href="assets/icono.ico">
+</head>
+<body>
+
+  <!-- 1. HEADER SUPERIOR -->
+<header class="top-header">
+  <div class="header-container">
+    
+    <!-- LOGOS (Lado a Lado) -->
+    <div class="logos-group">
+      <img src="assets/pascual_header.png" alt="Pascual Bravo" class="logo-img logo-pascual">
+      <img src="assets/sicauLogo.png" alt="SICAU" class="logo-img logo-sicau">
+    </div>
+
+    <!-- MENÚ USUARIO (Posicionado arriba a la derecha) -->
+    <div class="user-menu">
+      <a href="#" class="user-btn-link">Web Institucional</a>
+      <div class="user-info">
+        <span class="user-icon">👤</span>
+        <span class="username">andres.borja645</span>
+      </div>
+      <a href="#" class="logout-link">
+        <span class="logout-icon">↪</span> Cerrar sesión
+      </a>
+    </div>
+
+  </div>
+</header>
+
+  <!-- 2. BARRA DE NAVEGACIÓN AZUL -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" id="nav-inicio">Inicio</a></li>
+      <li><a href="estudiantes.html">Estudiantes</a></li>
+      <li><a href="egresados.html">Egresados</a></li>
+      <li><a href="extension.html">Extensión</a></li>
+      <li><a href="relax_mind.html" id="nav-relaxmind" class="highlight-nav active">
+          <img src="assets/logo.ico" width="15" height="10"> Relax Mind (Bienestar)</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- SECCIÓN EGRESADOS (Oculta por defecto) -->
+<section id="egresados-content" class="content-container hidden">
+  <h1 class="page-title">Egresados</h1>
+
+  <!-- Banner de sección -->
+  <div class="section-banner">
+    INFORMACIÓN E INSCRIPCIONES
+  </div>
+
+  <!-- Grilla de íconos -->
+  <div class="icons-grid">
+    <div class="grid-item">
+      <div class="icon-circle bg-blue">👤</div>
+      <p class="icon-label">Datos personales</p>
+    </div>
+
+    <div class="grid-item">
+      <div class="icon-circle bg-cyan">✓</div>
+      <p class="icon-label">Inscripción a procesos</p>
+    </div>
+
+    <div class="grid-item">
+      <div class="icon-circle bg-blue">⬅</div>
+      <p class="icon-label">Ingresar a Bibliotecas</p>
+    </div>
+
+    <div class="grid-item">
+      <div class="icon-circle bg-blue">📋</div>
+      <p class="icon-label">Actividades</p>
+    </div>
+
+    <div class="grid-item">
+      <div class="icon-circle bg-green">≡</div>
+      <p class="icon-label">Formulario de seguimiento a egresados actualizar datos</p>
+    </div>
+
+    <div class="grid-item">
+      <div class="icon-circle bg-cyan">≡</div>
+      <p class="icon-label">Encuesta de satisfacción - actividades para egresados</p>
+    </div>
+  </div>
+</section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

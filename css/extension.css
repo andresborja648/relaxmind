@@ -1,0 +1,95 @@
+/* Colores específicos para la vista Extensión */
+.icon-circle.bg-green-ext {
+  background-color: #5cb85c;
+}
+
+.icon-circle.bg-orange-ext {
+  background-color: #f0ad4e;
+}
+
+.icon-circle.bg-blue-ext {
+  background-color: #337ab7;
+}
+
+/* Corrección de tamaño para íconos SVG gigantes */
+.svg-icon {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Asegurar dimensión fija en el círculo del ícono */
+.icon-circle {
+  width: 65px !important;
+  height: 65px !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  overflow: hidden;
+}
+
+
+
+/* Forzar color oscuro en el círculo blanco */
+.dark-icon {
+  fill: #27394f !important;
+}
+
+/* 1. Forzar color blanco en TODOS los SVG con la clase white-icon */
+.white-icon, 
+.white-icon path {
+  fill: #ffffff !important;
+}
+
+/* 2. Banner azul de la sección */
+.section-banner {
+  background-color: #3b8296 !important; /* Azul turquesa exacto de la interfaz */
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 2px;
+  margin: 10px auto 35px auto;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* 3. Disposición en Grilla Horizontales (4 columnas en PC) */
+.icons-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 30px 20px !important;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 4. Asegurar círculo completo para TODOS los íconos (incluyendo el blanco) */
+.icon-circle {
+  width: 65px !important;
+  height: 65px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 12px auto !important;
+}
+
+.icon-circle.bg-light {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}

@@ -1,0 +1,90 @@
+/* --- VISTA EGRESADOS --- */
+.page-title {
+  font-size: 28px;
+  color: #334155;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-banner {
+  background-color: #3b8296; /* Azul turquesa exacto de la captura */
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 35px;
+}
+
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-3px);
+}
+
+.icon-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Colores de círculos calcados de la interfaz real */
+.icon-circle.bg-blue {
+  background-color: #2b78b3;
+}
+
+.icon-circle.bg-cyan {
+  background-color: #4dbcdb;
+}
+
+.icon-circle.bg-green {
+  background-color: #5cb85c;
+}
+
+.icon-circle.bg-light {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #cbd5e1;
+}
+
+.icon-label {
+  font-size: 12px;
+  color: #334155;
+  line-height: 1.3;
+  max-width: 160px;
+}
+
+/* Responsividad para la grilla de Egresados */
+@media (max-width: 768px) {
+  .icons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 15px;
+  }
+}
