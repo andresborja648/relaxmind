@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería El Tornillo Torcido</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="css/estilotornillo.css">
+</head>
+<body>
+
+    <!-- HEADER SUPERIOR -->
+    <header>
+        <div class="header-main-bar">
+            <div class="brand-title">
+                <span>🔩</span> Ferretería El Tornillo Torcido S.A.S.
+            </div>
+            
+            <div class="role-selector-container">
+                <label for="selectRol">Perfil:</label>
+                <select id="selectRol" onchange="cambiarRol()">
+                    <option value="usuario">👤 Usuario / Vendedor</option>
+                    <option value="admin">📊 Administrador (Power BI)</option>
+                </select>
+            </div>
+        </div>
+
+        <nav class="nav-main">
+            <button class="main-tab" onclick="cambiarSeccion('erp-ventas', this)">📦 Ventas & Facturación</button>
+            <button class="main-tab" onclick="cambiarSeccion('erp-inventario', this)">🛠️ Inventario General</button>
+            <button class="main-tab active" onclick="cambiarSeccion('relax-mind-main', this)">🧠 Relax Mind (Bienestar)</button>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="container">
+
+        <!-- VISTAS ERP -->
+        <section id="erp-ventas" class="section-view">
+            <h2 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Módulo de Facturación Comercial</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.85rem;">Registro operativo para asesores de venta en mesón.</p>
+            <div class="card-panel">
+                <label>Cédula o Nombre del Cliente:</label>
+                <input type="text" placeholder="Buscar cliente...">
+                <button class="btn-purple" onclick="alert('Factura registrada con éxito.')">Generar Factura</button>
+            </div>
+        </section>
+
+        <section id="erp-inventario" class="section-view">
+            <h2 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Inventario de Bodega</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Consulta de existencias de herramientas y materiales en tiempo real.</p>
+        </section>
+
+        <!-- MÓDULO RELAX MIND -->
+        <section id="relax-mind-main" class="section-view active">
+            
+            <div class="relax-header">
+                <div class="brain-logo">🧠</div>
+                <h1>Relax Mind <span class="tag-badge">Módulo Laboral</span></h1>
+                <p>Plataforma de bienestar y prevención de fatiga para personal en pantallas.</p>
+            </div>
+
+            <!-- 1. VISTA DE USUARIO / VENDEDOR -->
+            <div id="vistaUsuario">
+                <div id="panelControlTimer" class="card-panel" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <h4>⏱️ Control Automático de Pausas Activas</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                        El sistema cuenta con un ciclo automático (configurable por el admin). Al finalizar, aparecerá la autoevaluación obligatoria.
+                    </p>
+
+                    <div style="background: var(--bg-main); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
+                        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">PRÓXIMA PAUSA OBLIGATORIA EN:</span>
+                        <div id="timerRestante" style="font-size: 2.5rem; font-weight: bold; color: var(--purple-main); margin: 0.4rem 0;">00:30</div>
+                        <button class="btn-purple" onclick="abrirModalTest()">Simular Alerta de Test Ya</button>
+                    </div>
+                </div>
+
+                <!-- Pausa de Relajación Guiada por Fases (Con opción Repetir / Suficiente) -->
+                <div id="pause-view-relajacion" class="pause-view">
+                    <div class="guide-card text-center">
+                        
+                        <!-- Fases dinámicas -->
+                        <div id="guide-content-box">
+                            <div class="step-badge" id="relax-step-badge">Fase 1: Hombros y Cuello</div>
+                            
+                            <span class="guide-icon" id="relax-icon">💆‍♂️</span>
+                            <h4 id="relax-title">Deja caer los hombros</h4>
+                            <p id="relax-desc">Desaprieta la mandíbula, separa los dientes suavemente y deja que los hombros caigan lejos de las orejas.</p>
+                            
+                            <div class="step-timer-label">
+                                Siguiente zona en: <strong id="relax-step-timer" style="color: var(--purple-main);">15s</strong>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta de decisión final -->
+                        <div id="pause-decision-card" style="display: none;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.4rem;">✨</span>
+                            <h4 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.4rem;">¡Has completado el ciclo de relajación!</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                                ¿Cómo te sientes en este momento para retomar tus labores?
+                            </p>
+
+                            <div style="display: flex; gap: 8px; flex-direction: column;">
+                                <button class="btn-purple" style="background: var(--success);" onclick="finalizarPausaSuficiente()">
+                                    ✓ Fue suficiente, retomar trabajo
+                                </button>
+                                <button class="btn-purple" style="background: var(--purple-main);" onclick="repetirPausaRelajacion()">
+                                    🔄 Necesito repetir el ciclo de relajación
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. VISTA DE ADMINISTRADOR -->
+            <div id="vistaAdmin" style="display: none;">
+                <div class="powerbi-dashboard-box">
+                    <h2 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.2rem;">📊 Dashboard Gerencial - Power BI (Analytics)</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                        Panel de control donde el administrador gestiona los tiempos del ciclo y visualiza las analíticas de fatiga en vivo.
+                    </p>
+
+                    <div class="card-panel" style="background: var(--bg-main); margin-bottom: 1.25rem;">
+                        <h4 style="margin-bottom: 0.4rem;">⚙️ Configuración del Temporizador Automático</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem;">Define cada cuántos minutos se le exigirá la pausa activa al usuario:</p>
+                        <div style="display: flex; gap: 8px; flex-direction: column;">
+                            <input type="number" id="inputAdminTiempo" value="0.5" step="0.5" min="0.1" style="margin:0;">
+                            <button class="btn-purple" onclick="guardarConfiguracionAdmin()">Guardar Tiempo</button>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Evaluaciones</h3>
+                            <p id="adminTotalTests">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Pausas Realizadas</h3>
+                            <p id="adminTotalPausas">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Última Condición</h3>
+                            <p id="adminUltimoReporte" style="font-size: 0.95rem; margin-top: 6px;">Sin registros</p>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-main); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+                        <h4 style="text-align: center; color: var(--primary); font-size: 0.95rem;">📈 Reporte Gráfico de Niveles de Fatiga</h4>
+                        <div class="chart-container">
+                            <canvas id="powerBiChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.25rem; background: var(--bg-main); padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border);">
+                        <span style="font-size: 0.78rem; font-weight: 600; color: var(--primary);">Resumen de Analíticas Locales:</span>
+                        <p id="biResumenTexto" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Cargando métricas...</p>
+                    </div>
+
+                    <button class="btn-purple" style="margin-top: 1rem; background: var(--danger);" onclick="limpiarDatosAdmin()">Reiniciar Datos de Prueba</button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL AUTOMÁTICO: TEST DE 4 PREGUNTAS -->
+    <div class="modal-overlay" id="modalTestDescanso">
+        <div class="modal-content">
+            <h3 style="color: var(--purple-main); margin-bottom: 0.2rem; text-align: center; font-size: 1.2rem;">Test de Autoevaluación</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; text-align: center;">
+                Selecciona la opción que mejor describa cómo te sientes en este momento:
+            </p>
+
+            <!-- Pregunta 1 -->
+            <div class="test-question-block">
+                <p>1. ¿Qué tan cansados sientes tus ojos o tu mente en este momento?</p>
+                <div class="test-options-group">
+                    <label><input type="radio" name="p1" value="Fresco / Despejado"> Fresco / Despejado</label>
+                    <label><input type="radio" name="p1" value="Ligeramente cansado"> Ligeramente cansado</label>
+                    <label><input type="radio" name="p1" value="Fatiga moderada (pesadez)"> Fatiga moderada (pesadez)</label>
+                    <label><input type="radio" name="p1" value="Exhausto / Visión borrosa"> Exhausto / Visión borrosa</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="test-question-block">
+                <p>2. ¿Cómo calificarías tu nivel de estrés o ansiedad académica/laboral?</p>
+                <div class="test-options-group">
+                    <label><input type="radio" name="p2" value="Tranquilo"> Tranquilo</label>
+                    <label><input type="radio" name="p2" value="Algo acelerado"> Algo acelerado</label>
+                    <label><input type="radio" name="p2" value="Estresado"> Estresado</label>
+                    <label><input type="radio" name="p2" value="Muy tenso / Abrumado"> Muy tenso / Abrumado</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="test-question-block">
+                <p>3. ¿Qué tan fácil te ha sido mantener la concentración hoy?</p>
+                <div class="test-options-group">
+                    <label><input type="radio" name="p3" value="Muy fácil y fluida"> Muy fácil y fluida</label>
+                    <label><input type="radio" name="p3" value="Normal (con alguna distracción)"> Normal (con alguna distracción)</label>
+                    <label><input type="radio" name="p3" value="Me cuesta concentrarme"> Me cuesta concentrarme</label>
+                    <label><input type="radio" name="p3" value="Imposible enfocarme"> Imposible enfocarme</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="test-question-block">
+                <p>4. ¿Cuántas horas continuas llevas frente a pantallas sin descansar?</p>
+                <div class="test-options-group">
+                    <label><input type="radio" name="p4" value="Menos de 1 hora"> Menos de 1 hora</label>
+                    <label><input type="radio" name="p4" value="Entre 1 y 2 horas"> Entre 1 y 2 horas</label>
+                    <label><input type="radio" name="p4" value="Entre 2 y 4 horas"> Entre 2 y 4 horas</label>
+                    <label><input type="radio" name="p4" value="Más de 4 horas seguidas"> Más de 4 horas seguidas</label>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.25rem;">
+                <button class="btn-purple" style="width: 100%; padding: 0.7rem;" onclick="enviarTestCompleto()">Obtener Diagnóstico</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Externo -->
+    <script src="js/logicatornillo.js"></script>
+</body>
+</html>

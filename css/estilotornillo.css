@@ -1,0 +1,412 @@
+/* ==========================================================================
+   VARIABLES Y ESTILOS GLOBALES
+   ========================================================================== */
+:root {
+    --primary: #1e293b;
+    --purple-main: #7c3aed;
+    --purple-light: #f3f0ff;
+    --purple-hover: #6d28d9;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   HEADER Y NAVEGACIÓN
+   ========================================================================== */
+header {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-main-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .header-main-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+.brand-title {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.role-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.role-selector-container label {
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.role-selector-container select {
+    background: #0f172a;
+    color: white;
+    border: 1px solid #475569;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    margin: 0;
+    width: auto;
+}
+
+.nav-main {
+    background: #0f172a;
+    display: flex;
+    overflow-x: auto;
+    padding: 0 0.5rem;
+    scrollbar-width: none;
+}
+.nav-main::-webkit-scrollbar { display: none; }
+
+.main-tab {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.main-tab:hover, 
+.main-tab.active {
+    color: #ffffff;
+    border-bottom: 2px solid var(--purple-main);
+}
+
+/* ==========================================================================
+   CONTENEDOR Y VISTAS
+   ========================================================================== */
+.container {
+    max-width: 1050px;
+    margin: 1rem auto;
+    padding: 0 0.8rem;
+    width: 100%;
+    flex: 1;
+}
+
+@media (min-width: 640px) {
+    .container { margin: 2rem auto; padding: 0 1rem; }
+}
+
+.section-view { display: none; }
+.section-view.active { display: block; }
+
+.relax-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.brain-logo {
+    font-size: 2.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.relax-header h1 {
+    font-size: 1.4rem;
+    color: var(--purple-main);
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tag-badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--purple-light);
+    color: var(--purple-main);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.relax-header p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.card-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    margin-bottom: 1.25rem;
+}
+
+.card-panel h4 {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-purple {
+    background: var(--purple-main);
+    color: white;
+    border: none;
+    padding: 0.65rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .btn-purple { width: auto; font-size: 0.9rem; padding: 0.6rem 1.2rem; }
+}
+
+.btn-purple:hover { background: var(--purple-hover); }
+
+label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--primary); margin-bottom: 0.4rem; }
+input, select {
+    width: 100%;
+    padding: 0.65rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background: #fff;
+}
+
+/* ==========================================================================
+   MODAL DE AUTOEVALUACIÓN (CORREGIDO Y ALINEADO)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 3000;
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    padding: 1rem 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .modal-overlay { align-items: center; padding: 2rem 1rem; }
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal-content {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    max-width: 650px;
+    width: 100%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-height: 92vh;
+    overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+    .modal-content { padding: 2rem; }
+}
+
+.test-question-block {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    padding: 0.85rem;
+    border-radius: 8px;
+    margin-bottom: 0.85rem;
+}
+
+.test-question-block p {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-bottom: 0.6rem;
+}
+
+.test-options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.test-options-group label {
+    font-weight: normal;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-main);
+    margin: 0;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.test-options-group input[type="radio"] {
+    width: auto;
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   TARJETA DE PAUSA DE RELAJACIÓN GUIADA (POR FASES)
+   ========================================================================== */
+.pause-view { display: none; }
+.pause-view.active { display: block; }
+
+.guide-card {
+    background: var(--card-bg);
+    border: 2px solid var(--purple-main);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    max-width: 550px;
+    margin: 1rem auto;
+    box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.1);
+}
+
+.step-badge {
+    background: var(--purple-light);
+    color: var(--purple-main);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.guide-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.guide-card h4 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+}
+
+.guide-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
+}
+
+.step-timer-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   ESTADÍSTICAS Y DASHBOARD (CHART.JS)
+   ========================================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+@media(min-width: 640px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple-main);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.stat-card h3 { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; }
+.stat-card p { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-top: 0.4rem; }
+
+.powerbi-dashboard-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+@media (min-width: 640px) {
+    .powerbi-dashboard-box { padding: 1.5rem; }
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+    margin: 1rem auto 0 auto;
+}
+
+@media (min-width: 640px) {
+    .chart-container { height: 300px; }
+}
