@@ -232,7 +232,7 @@ input, select {
 }
 
 /* ==========================================================================
-   MODAL DE AUTOEVALUACIÓN (CORREGIDO Y ALINEADO)
+   MODAL DE AUTOEVALUACIÓN
    ========================================================================== */
 .modal-overlay {
     position: fixed;
@@ -313,7 +313,7 @@ input, select {
 }
 
 /* ==========================================================================
-   TARJETA DE PAUSA DE RELAJACIÓN GUIADA (POR FASES)
+   PAUSA DE RELAJACIÓN GUIADA
    ========================================================================== */
 .pause-view { display: none; }
 .pause-view.active { display: block; }
@@ -364,7 +364,7 @@ input, select {
 }
 
 /* ==========================================================================
-   ESTADÍSTICAS Y DASHBOARD (CHART.JS)
+   ESTADÍSTICAS Y DASHBOARD
    ========================================================================== */
 .stats-grid {
     display: grid;

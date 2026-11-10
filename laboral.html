@@ -6,8 +6,10 @@
     <title>Ferretería El Tornillo Torcido</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chart.js -->
+    <!-- Chart.js para gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SheetJS (XLSX) para exportar a Excel -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <!-- CSS Externo -->
     <link rel="stylesheet" href="css/estilotornillo.css">
 </head>
@@ -24,7 +26,7 @@
                 <label for="selectRol">Perfil:</label>
                 <select id="selectRol" onchange="cambiarRol()">
                     <option value="usuario">👤 Usuario / Vendedor</option>
-                    <option value="admin">📊 Administrador (Power BI)</option>
+                    <option value="admin">📊 Reporte SST</option>
                 </select>
             </div>
         </div>
@@ -66,10 +68,18 @@
 
             <!-- 1. VISTA DE USUARIO / VENDEDOR -->
             <div id="vistaUsuario">
+                <div class="card-panel" style="max-width: 600px; margin: 0 auto 1.25rem auto;">
+                    <label for="selectVendedorActual">👤 Seleccionar Vendedor Actual en Turno:</label>
+                    <select id="selectVendedorActual" style="margin: 0;">
+                        <option value="carlos">Carlos Pérez (Asesor Principal - Mesón 1)</option>
+                        <option value="ana">Ana Gómez (Asesora Comercial - Mesón 2)</option>
+                    </select>
+                </div>
+
                 <div id="panelControlTimer" class="card-panel" style="max-width: 600px; margin: 0 auto; text-align: center;">
                     <h4>⏱️ Control Automático de Pausas Activas</h4>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                        El sistema cuenta con un ciclo automático (configurable por el admin). Al finalizar, aparecerá la autoevaluación obligatoria.
+                        El ciclo automático corre en segundo plano. Al finalizar, el test guardará los resultados asociados al colaborador seleccionado.
                     </p>
 
                     <div style="background: var(--bg-main); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
@@ -79,41 +89,28 @@
                     </div>
                 </div>
 
-                <!-- Pausa de Relajación Guiada por Fases (Con opción Repetir / Suficiente) -->
+                <!-- Pausa de Relajación Guiada por Fases -->
                 <div id="pause-view-relajacion" class="pause-view">
                     <div class="guide-card text-center">
-                        
-                        <!-- Fases dinámicas -->
                         <div id="guide-content-box">
                             <div class="step-badge" id="relax-step-badge">Fase 1: Hombros y Cuello</div>
-                            
                             <span class="guide-icon" id="relax-icon">💆‍♂️</span>
                             <h4 id="relax-title">Deja caer los hombros</h4>
                             <p id="relax-desc">Desaprieta la mandíbula, separa los dientes suavemente y deja que los hombros caigan lejos de las orejas.</p>
-                            
                             <div class="step-timer-label">
                                 Siguiente zona en: <strong id="relax-step-timer" style="color: var(--purple-main);">15s</strong>
                             </div>
                         </div>
 
-                        <!-- Tarjeta de decisión final -->
                         <div id="pause-decision-card" style="display: none;">
                             <span style="font-size: 2.5rem; display: block; margin-bottom: 0.4rem;">✨</span>
                             <h4 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 0.4rem;">¡Has completado el ciclo de relajación!</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                                ¿Cómo te sientes en este momento para retomar tus labores?
-                            </p>
-
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">¿Cómo te sientes en este momento para retomar tus labores?</p>
                             <div style="display: flex; gap: 8px; flex-direction: column;">
-                                <button class="btn-purple" style="background: var(--success);" onclick="finalizarPausaSuficiente()">
-                                    ✓ Fue suficiente, retomar trabajo
-                                </button>
-                                <button class="btn-purple" style="background: var(--purple-main);" onclick="repetirPausaRelajacion()">
-                                    🔄 Necesito repetir el ciclo de relajación
-                                </button>
+                                <button class="btn-purple" style="background: var(--success);" onclick="finalizarPausaSuficiente()">✓ Fue suficiente, retomar trabajo</button>
+                                <button class="btn-purple" style="background: var(--purple-main);" onclick="repetirPausaRelajacion()">🔄 Necesito repetir el ciclo de relajación</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -123,12 +120,21 @@
                 <div class="powerbi-dashboard-box">
                     <h2 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.2rem;">📊 Dashboard Gerencial - Power BI (Analytics)</h2>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                        Panel de control donde el administrador gestiona los tiempos del ciclo y visualiza las analíticas de fatiga en vivo.
+                        Filtra los reportes de bienestar por colaborador específico o visualiza el consolidado global de la ferretería.
                     </p>
+
+                    <!-- Filtro Administrador -->
+                    <div class="card-panel" style="background: var(--bg-main); margin-bottom: 1.25rem;">
+                        <label for="selectFiltroAdmin">🔍 Filtrar Reporte por Colaborador o Consolidado:</label>
+                        <select id="selectFiltroAdmin" onchange="actualizarDashboardAdmin()" style="margin: 0;">
+                            <option value="global">🌐 Consolidado Global (Toda la Ferretería)</option>
+                            <option value="carlos">👤 Carlos Pérez (Asesor - Mesón 1)</option>
+                            <option value="ana">👤 Ana Gómez (Asesora - Mesón 2)</option>
+                        </select>
+                    </div>
 
                     <div class="card-panel" style="background: var(--bg-main); margin-bottom: 1.25rem;">
                         <h4 style="margin-bottom: 0.4rem;">⚙️ Configuración del Temporizador Automático</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem;">Define cada cuántos minutos se le exigirá la pausa activa al usuario:</p>
                         <div style="display: flex; gap: 8px; flex-direction: column;">
                             <input type="number" id="inputAdminTiempo" value="0.5" step="0.5" min="0.1" style="margin:0;">
                             <button class="btn-purple" onclick="guardarConfiguracionAdmin()">Guardar Tiempo</button>
@@ -158,11 +164,19 @@
                     </div>
 
                     <div style="margin-top: 1.25rem; background: var(--bg-main); padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border);">
-                        <span style="font-size: 0.78rem; font-weight: 600; color: var(--primary);">Resumen de Analíticas Locales:</span>
+                        <span style="font-size: 0.78rem; font-weight: 600; color: var(--primary);">Resumen de Analíticas:</span>
                         <p id="biResumenTexto" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Cargando métricas...</p>
                     </div>
 
-                    <button class="btn-purple" style="margin-top: 1rem; background: var(--danger);" onclick="limpiarDatosAdmin()">Reiniciar Datos de Prueba</button>
+                    <!-- Botones de Acción Administrador -->
+                    <div style="display: flex; gap: 10px; flex-direction: column; margin-top: 1rem;">
+                        <button class="btn-purple" style="background: #10b981;" onclick="exportarExcelBienestar()">
+                            📗 Descargar Reporte en Excel (.xlsx)
+                        </button>
+                        <button class="btn-purple" style="background: var(--danger);" onclick="limpiarDatosAdmin()">
+                            Reiniciar Todos los Datos
+                        </button>
+                    </div>
                 </div>
             </div>
 
